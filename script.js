@@ -13,7 +13,6 @@ let playerScore = 0;
 let computerScore = 0;
 
 
-
 function playRound(player, comp) {
   if (comp == player) {
     console.log("Tie");
@@ -28,8 +27,9 @@ function playRound(player, comp) {
   };
 };
 
-function playGame(rounds) {
+function playGame(rounds=1) {
   for (let i = 0; i < rounds; i++) {
+    console.log(`---\nRound ${i+1}\n---`)
     playRound(playerShoot(), computerShoot());
     console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
   };
@@ -57,5 +57,5 @@ function isWinner(main, opponent) {
   return conditions[main][opponent];
 };
 
-
-playGame(5);
+const startButton = document.getElementById("start-button");
+startButton.addEventListener("click", () => playGame(5))
