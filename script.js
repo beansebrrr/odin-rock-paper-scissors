@@ -44,10 +44,10 @@ function computerShoot() {
 function playerShoot() {
   let p = '';
   function isAWeapon(input) {
-    return (weapons.indexOf(input.toLowerCase()) > -1);
+    return (weapons.indexOf(input) > -1);
   };
   while (!isAWeapon(p)) {
-    p = prompt("Rock, paper, or scissors?");
+    p = prompt("Rock, paper, or scissors?").toLowerCase();
   };
   console.log(`Player shoots ${p}`);
   return p;
