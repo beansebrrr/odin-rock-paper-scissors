@@ -51,7 +51,7 @@ function playerShoot() {
   };
   console.log(`Player shoots ${p}`);
   return p;
-}
+};
 
 function isWinner(main, opponent) {
   return conditions[main][opponent];
