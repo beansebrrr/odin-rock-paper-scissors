@@ -4,18 +4,7 @@
 
 const btnSection  = document.querySelector("div.btnSection")
 
-btnSection.addEventListener("click", (event) => {
-  let playerShoot = event.target.id;
-  
-  function isAWeapon(input) {
-    return (weapons.indexOf(input) > -1);
-  };
-
-  if (isAWeapon(playerShoot)) {
-    console.log(`Player shoots ${playerShoot}`)
-    playRound(playerShoot, computerShoot());
-  };
-});
+btnSection.addEventListener("click", (e) => playerShoot(e))
 
 
 const conditions = {
@@ -75,6 +64,18 @@ function computerShoot() {
   console.log(`Computer shoots ${weapons[i]}`);
   return weapons[i];
 };
+
+function playerShoot(e) {
+  let choice = e.target.id;
+  
+  function isAWeapon(input) {
+    return (weapons.indexOf(input) > -1);
+  };
+  if (isAWeapon(choice)) {
+    console.log(`Player shoots ${choice}`)
+    playRound(choice, computerShoot());
+  };
+}
 
 
 function isWinner(main, opponent) {
