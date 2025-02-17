@@ -2,13 +2,39 @@
  * Pock Scaper Rissors
 */
 
-const weapons = ["rock", "paper", "scissors"];
-
 const conditions = {
-  "rock" :      {"paper" : false, "scissors" : true},
-  "paper" :     {"scissors" : false, "rock" : true},
-  "scissors" :  {"rock" : false, "paper" : true},
+  "rock" : {
+    "paper" : false,
+    "scissors" : true,
+    "lizard" : true,
+    "spock" : false,
+  },
+  "paper" : {
+    "rock" : true,
+    "scissors" : false,
+    "lizard" : false,
+    "spock" : true,
+  },
+  "scissors" : {
+    "rock" : false,
+    "paper" : true,
+    "lizard" : true,
+    "spock" : false,
+  },
+  "lizard" : {
+    "rock" : false,
+    "paper" : true,
+    "scissors" : false,
+    "spock" : true,
+  },
+  "spock" : {
+    "rock" : true,
+    "paper" : false,
+    "scissors" : true,
+    "lizard" : false,
+  },
 };
+const weapons = Object.keys(conditions)
 let playerScore = 0;
 let computerScore = 0;
 
@@ -36,7 +62,7 @@ function playGame(rounds=1) {
 };
 
 function computerShoot() {
-  const i = Math.floor(Math.random() * 3);
+  const i = Math.floor(Math.random() * weapons.length);
   console.log(`Computer shoots ${weapons[i]}`);
   return weapons[i];
 };
