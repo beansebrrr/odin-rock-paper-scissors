@@ -1,0 +1,7 @@
+#resultText.victory {
+  color: green;
+}
+
+#resultText.loss {
+  color: red;
+}

@@ -43,17 +43,30 @@ const weapons = Object.keys(conditions)
 let playerScore = 0;
 let computerScore = 0;
 
+const playerActionText = document.querySelector(".playerAction")
+const computerActionText = document.querySelector(".computerAction")
+const resultText = document.querySelector("#resultText")
 
 function playRound(player, comp) {
+  playerActionText.textContent = `You used ${player}!`
+  computerActionText.textContent = `Computer used ${comp}!`
+  
+
+  resultText.classList = []
   if (comp == player) {
-    console.log("Tie");
-  } else if (isWinner(player, comp)) {
-    console.log("Win");
+    resultText.textContent = "Tie!"
+  }
+  else if (isWinner(player, comp)) {
+    resultText.textContent = "You win!"
+    resultText.classList.add("victory")
     playerScore++;
-  } else if (isWinner(comp, player)) {
-    console.log("Lose");
+  }
+  else if (isWinner(comp, player)) {
+    resultText.textContent = "You lost!"
+    resultText.classList.add("loss")
     computerScore++;
-  } else {
+  }
+  else {
     console.log("Something really bad happened.");
   };
 };
