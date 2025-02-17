@@ -2,8 +2,22 @@
  * Pock Scaper Rissors
 */
 
-const weapons = ["rock", "paper", "scissors"];
+const btnSection  = document.querySelector("div.btnSection")
 
+btnSection.addEventListener("click", (event) => {
+  let playerShoot = event.target.id;
+  
+  function isAWeapon(input) {
+    return (weapons.indexOf(input) > -1);
+  };
+
+  if (isAWeapon(playerShoot)) {
+    console.log(`Player shoots ${playerShoot}`)
+    playRound(playerShoot, computerShoot());
+  };
+});
+
+const weapons = ["rock", "paper", "scissors"];
 const conditions = {
   "rock" :      {"paper" : false, "scissors" : true},
   "paper" :     {"scissors" : false, "rock" : true},
@@ -27,13 +41,6 @@ function playRound(player, comp) {
   };
 };
 
-function playGame(rounds=1) {
-  for (let i = 0; i < rounds; i++) {
-    console.log(`---\nRound ${i+1}\n---`)
-    playRound(playerShoot(), computerShoot());
-    console.log(`Player: ${playerScore}\nComputer: ${computerScore}`);
-  };
-};
 
 function computerShoot() {
   const i = Math.floor(Math.random() * 3);
@@ -41,21 +48,7 @@ function computerShoot() {
   return weapons[i];
 };
 
-function playerShoot() {
-  let p = '';
-  function isAWeapon(input) {
-    return (weapons.indexOf(input) > -1);
-  };
-  while (!isAWeapon(p)) {
-    p = prompt("Rock, paper, or scissors?").toLowerCase();
-  };
-  console.log(`Player shoots ${p}`);
-  return p;
-};
 
 function isWinner(main, opponent) {
   return conditions[main][opponent];
 };
-
-const startButton = document.getElementById("start-button");
-startButton.addEventListener("click", () => playGame(5))
