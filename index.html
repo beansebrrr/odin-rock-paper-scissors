@@ -10,30 +10,40 @@
 <body>
   <div class="modalContainer">
     <div class="modal">
-      <h1></h1>
-      <button>restart?</button>
+      <h1 id="modalHeader"></h1>
+      <button id="restartButton">Play again!</button>
     </div>
   </div>
   
-  <div id="resultText"></div>
-  <div class="playArena">
-    <div class="playerSide">
-      <div class="playerScore">0</div>
-      <div id="playerChoice"></div>
-    </div>
-    <div class="computerSide">
-      <p class="computerScore">0</p>
-      <div id="computerChoice"></div>
-    </div>
-  </div>
+  <header id="resultText">Rock, paper, scissors, lizard, Spock!</header>
+  <section class="playArena">
 
-  <div class="btnSection">
+    <div class="arenaBlock">
+      <div class="avatarContainer">
+        <span class="avatar">🧑</span>
+        <span class="scoreCounter" id="playerScore">0</span>
+      </div>
+      <div class="choiceDisplay" id="playerChoice"></div>
+    </div>
+    <div class="arenaBlock">
+      <div class="choiceDisplay" id="computerChoice"></div>
+      <div class="avatarContainer">
+        <span class="avatar">🤖</span>
+        <span class="scoreCounter" id="computerScore">0</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="btnSection">
     <button id="rock">🪨</button>
     <button id="paper">📃</button>
     <button id="scissors">✂️</button>
     <button id="lizard">🦎</button>
     <button id="spock">🖖</button>
-  </div>
+  </section>
 
+  <footer>
+    made by beansebrrr for The Odin Project
+  </footer>
 </body>
 </html>

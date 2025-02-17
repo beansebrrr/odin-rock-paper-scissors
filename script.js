@@ -2,8 +2,24 @@
  * Pock Scaper Rissors
 */
 
-const btnSection  = document.querySelector("div.btnSection")
-btnSection.addEventListener("click", (e) => playRound(e))
+let playerScore = 0;
+let computerScore = 0;
+
+const playerScoreText = document.querySelector("#playerScore");
+const computerScoreText = document.querySelector("#computerScore");
+
+const playerChoiceBox = document.querySelector("#playerChoice");
+const computerChoiceBox = document.querySelector("#computerChoice");
+const resultText = document.querySelector("#resultText");
+
+const modalContainer = document.querySelector(".modalContainer");
+const modalHeader = document.querySelector("#modalHeader");
+const restartButton = document.querySelector("#restartButton");
+
+const btnSection  = document.querySelector(".btnSection");
+
+// The godfather of all events btw.
+btnSection.addEventListener("click", (e) => playRound(e));
 
 const conditions = {
   "rock" : {
@@ -37,51 +53,37 @@ const conditions = {
     "lizard" : false,
   },
 };
+const weapons = Object.keys(conditions);
 const emojis = {
   "rock" : "✊",
   "paper" : "🖐️",
   "scissors" : "✌️",
   "lizard" : "🫳",
   "spock" : "🖖",
-}
+};
 
-const weapons = Object.keys(conditions)
-let playerScore = 0;
-let computerScore = 0;
-
-const playerActionText = document.querySelector(".playerAction")
-const playerScoreText = document.querySelector(".playerScore")
-const computerActionText = document.querySelector(".computerAction")
-const computerScoreText = document.querySelector(".computerScore")
-
-const playerChoiceBox = document.querySelector("#playerChoice")
-const computerChoiceBox = document.querySelector("#computerChoice")
-const resultText = document.querySelector("#resultText")
-
-const modalContainer = document.querySelector(".modalContainer")
-const modalHeader = document.querySelector(".modal>h1");
-const restartButton = document.querySelector(".modal>button");
 
 function playRound(e) {
-  const player = playerShoot(e)
-  const comp = computerShoot()
+  const player = playerShoot(e);
+  if (player == false) { return };
+  const comp = computerShoot();
 
-  resultText.classList = []
+  resultText.classList = [];
 
   if (comp == player) {
-    resultText.textContent = "Tie!"
+    resultText.textContent = "Tie!";
   } else if (determineWinner(player, comp)) {
     resultText.classList.add("victory");
-    resultText.textContent = `${player} wins against ${comp}!`;
+    resultText.textContent = capitalize(`${player} wins against ${comp}!`);
     playerScore++;
   } else if (!determineWinner(player, comp)) {
     resultText.classList.add("loss");
-    resultText.textContent = `${player} loses to ${comp}.`
+    resultText.textContent = capitalize(`${player} loses to ${comp}.`);
     computerScore++;
   } else {
     console.log("Something really bad happened.");
   };
-  updateScreen()
+  updateScreen();
 };
 
 function updateScreen() {
@@ -94,9 +96,8 @@ function updateScreen() {
 
 function computerShoot() {
   const i = Math.floor(Math.random() * weapons.length);
-  const choice = weapons[i]
-  console.log(`Computer shoots ${choice}`);
-  computerChoiceBox.textContent = emojis[choice]
+  const choice = weapons[i];
+  computerChoiceBox.textContent = emojis[choice];
   return choice;
 };
 
@@ -106,22 +107,24 @@ function playerShoot(e) {
   function isAWeapon(input) { return (weapons.indexOf(input) > -1) };
   
   if (isAWeapon(choice)) {
-    console.log(`Player shoots ${choice}`)
-    playerChoiceBox.textContent = emojis[choice]
+    playerChoiceBox.textContent = emojis[choice];
     return (choice);
   };
+  return false;
 };
 
 function determineWinner(main, opponent) {
   return conditions[main][opponent];
 };
 
-
 function restartGame() {
-  playerChoiceBox.textContent = ''
-  computerChoiceBox.textContent = ''
-  resultText.textContent = '';
-  modalContainer.style.display = "none"
+  modalContainer.style.display = "none";
+
+  resultText.textContent = 'Rock, paper, scissors, lizard, Spock!';
+  resultText.classList = [];
+  
+  playerChoiceBox.textContent = '';
+  computerChoiceBox.textContent = '';
   playerScore = 0;
   computerScore = 0;
   playerScoreText.textContent = playerScore;
@@ -130,7 +133,11 @@ function restartGame() {
 
 function popUp(message) {
   modalHeader.textContent = message;
-  modalContainer.style.display = "flex"
+  modalContainer.style.display = "flex";
 
   restartButton.addEventListener("click", () => restartGame());
+};
+
+function capitalize(string) {
+  return (string.charAt(0).toUpperCase() + string.slice(1));
 };
