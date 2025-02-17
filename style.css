@@ -1,7 +1,68 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.playArena {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#playerChoice,
+#computerChoice {
+  font-size: 9rem;
+}
+
+#computerChoice {
+  transform: scale(-1, 1);
+}
+
+.btnSection {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btnSection button {
+  font-size: 5rem;
+}
+
+#resultText {
+  font-size: 3rem;
+  text-align: center;
+}
+
 #resultText.victory {
   color: green;
 }
 
 #resultText.loss {
   color: red;
+}
+
+.modalContainer {
+  width: 100%;
+  min-width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #00000080;
+  z-index: 1;
+  position: absolute;
+  display: none;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #fff;
+  width: fit-content;
+  height: fit-content;
+  max-width: 90vw;
+  padding: 1.5em;
+  border: #000 solid 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }

@@ -8,17 +8,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="modalContainer">
+    <div class="modal">
+      <h1></h1>
+      <button>restart?</button>
+    </div>
+  </div>
+  
+  <div id="resultText"></div>
+  <div class="playArena">
+    <div class="playerSide">
+      <div class="playerScore">0</div>
+      <div id="playerChoice"></div>
+    </div>
+    <div class="computerSide">
+      <p class="computerScore">0</p>
+      <div id="computerChoice"></div>
+    </div>
+  </div>
+
   <div class="btnSection">
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissors">scissors</button>
-    <button id="lizard">lizard</button>
-    <button id="spock">spock</button>
+    <button id="rock">🪨</button>
+    <button id="paper">📃</button>
+    <button id="scissors">✂️</button>
+    <button id="lizard">🦎</button>
+    <button id="spock">🖖</button>
   </div>
-  <div id="actionSection">
-    <p class="playerAction"></p>
-    <p class="computerAction"></p>
-  </div>
-  <p id="resultText">Play</p>
+
 </body>
 </html>
