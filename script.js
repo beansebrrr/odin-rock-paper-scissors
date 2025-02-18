@@ -53,6 +53,7 @@ const conditions = {
     "lizard" : false,
   },
 };
+
 const weapons = Object.keys(conditions);
 const emojis = {
   "rock" : "✊",
@@ -86,6 +87,7 @@ function playRound(e) {
   updateScreen();
 };
 
+
 function updateScreen() {
   playerScoreText.textContent = playerScore;
   computerScoreText.textContent = computerScore;
@@ -101,6 +103,7 @@ function computerShoot() {
   return choice;
 };
 
+
 function playerShoot(e) {
   let choice = e.target.id;
   
@@ -113,14 +116,16 @@ function playerShoot(e) {
   return false;
 };
 
+
 function determineWinner(main, opponent) {
   return conditions[main][opponent];
 };
 
+
 function restartGame() {
   modalContainer.style.display = "none";
 
-  resultText.textContent = 'Rock, paper, scissors, lizard, Spock!';
+  resultText.textContent = 'Rock, paper, scissors, lizard, spock!';
   resultText.classList = [];
   
   playerChoiceBox.textContent = '';
@@ -129,7 +134,8 @@ function restartGame() {
   computerScore = 0;
   playerScoreText.textContent = playerScore;
   computerScoreText.textContent = computerScore;
-} 
+};
+
 
 function popUp(message) {
   modalHeader.textContent = message;
@@ -137,6 +143,7 @@ function popUp(message) {
 
   restartButton.addEventListener("click", () => restartGame());
 };
+
 
 function capitalize(string) {
   return (string.charAt(0).toUpperCase() + string.slice(1));

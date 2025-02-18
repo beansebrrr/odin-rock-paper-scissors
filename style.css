@@ -25,6 +25,7 @@
 body {
   background-color: var(--main-light);
   font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--main-dark);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@ button {
     var(--main-dark) 0 4px,
     var(--main-dark) 0 4px 12px;
   padding: 0.5rem;
-  transition: all 100ms ease-out;
+  transition: all 200ms ease-out;
 }
 button:active {
   transform: translateY(8px);
@@ -46,19 +47,21 @@ button:active {
   box-shadow: none;
 }
 
-header {
+header, footer {
   padding: 1.5rem;
 }
 
 footer {
-  padding: 1.5rem;
   background-color: var(--main-dark);
   color: var(--main-light);
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 1;
+}
+
+footer a {
+  color: var(--main-light);
 }
 
 .playArena {
@@ -116,18 +119,21 @@ footer {
 .btnSection {
   padding-block: 5rem;
   display: flex;
+  flex-wrap: wrap;
+  flex: 1;
   justify-content: center;
   gap: 0.75rem;
 }
 .btnSection button {
   font-size: 5rem;
+  width: fit-content;
+  height: fit-content;
 }
 
 #resultText {
   font-size: 2rem;
   text-align: center;
 }
-
 
 .modalContainer {
   width: 100%;
