@@ -17,13 +17,15 @@
       <button id="restartButton">Play again!</button>
     </div>
   </div>
-  
-  <header id="resultText">Rock, paper, scissors, lizard, spock!</header>
+  <header>
+    <span id="resultText">Rock, paper, scissors, lizard, spock!</span>
+    <span>First to 5 points wins!</span>
+  </header>
   <section class="playArena">
 
     <div class="arenaBlock">
       <div class="avatarContainer">
-        <span class="avatar">🧑</span>
+        <span class="avatar" id="playerAvatar">🧑</span>
         <span class="scoreCounter" id="playerScore">0</span>
       </div>
       <div class="choiceDisplay" id="playerChoice"></div>
@@ -31,7 +33,7 @@
     <div class="arenaBlock">
       <div class="choiceDisplay" id="computerChoice"></div>
       <div class="avatarContainer">
-        <span class="avatar">🤖</span>
+        <span class="avatar" id="computerAvatar">🤖</span>
         <span class="scoreCounter" id="computerScore">0</span>
       </div>
     </div>

@@ -8,7 +8,9 @@ let computerScore = 0;
 const playerScoreText = document.querySelector("#playerScore");
 const computerScoreText = document.querySelector("#computerScore");
 
+const playerAvatar = document.querySelector("#playerAvatar");
 const playerChoiceBox = document.querySelector("#playerChoice");
+const computerAvatar = document.querySelector("#computerAvatar");
 const computerChoiceBox = document.querySelector("#computerChoice");
 const resultText = document.querySelector("#resultText");
 
@@ -19,7 +21,11 @@ const restartButton = document.querySelector("#restartButton");
 const btnSection  = document.querySelector(".btnSection");
 
 // The godfather of all events btw.
-btnSection.addEventListener("click", (e) => playRound(e));
+btnSection.addEventListener("click", (e) => {
+  initializeRound();
+  playRound(e);
+  updateScreen();
+});
 
 const conditions = {
   "rock" : {
@@ -63,28 +69,38 @@ const emojis = {
   "spock" : "🖖",
 };
 
+function initializeRound() {
+  resultText.classList = [];
+  playerAvatar.classList.remove("bounce")
+  playerAvatar.offsetHeight;
+  computerAvatar.classList.remove("bounce")
+  computerAvatar.offsetHeight;
+}
+
 
 function playRound(e) {
   const player = playerShoot(e);
   if (player == false) { return };
-  const comp = computerShoot();
-
-  resultText.classList = [];
+  const comp = computerShoot()
 
   if (comp == player) {
     resultText.textContent = "Tie!";
+  
   } else if (determineWinner(player, comp)) {
     resultText.classList.add("victory");
     resultText.textContent = capitalize(`${player} wins against ${comp}!`);
+    playerAvatar.classList.add("bounce")
     playerScore++;
+  
   } else if (!determineWinner(player, comp)) {
     resultText.classList.add("loss");
     resultText.textContent = capitalize(`${player} loses to ${comp}.`);
+    computerAvatar.classList.add("bounce")
     computerScore++;
   } else {
     console.log("Something really bad happened.");
   };
-  updateScreen();
+  
 };
 
 
@@ -127,6 +143,8 @@ function restartGame() {
 
   resultText.textContent = 'Rock, paper, scissors, lizard, spock!';
   resultText.classList = [];
+  playerAvatar.classList.remove("bounce")
+  computerAvatar.classList.remove("bounce")
   
   playerChoiceBox.textContent = '';
   computerChoiceBox.textContent = '';

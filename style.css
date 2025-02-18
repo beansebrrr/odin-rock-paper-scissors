@@ -3,6 +3,7 @@
   --main-light: #EADEDA;
   --accent-yellow: #FFD400;
   --accent-red: #D90368;
+  --accent-green: #00de59;
 }
 
 @keyframes popIn {
@@ -13,6 +14,27 @@
 @keyframes fadeIn {
   from { opacity: 1%; }
   to { opacity: 100%; }
+}
+
+@keyframes bounce {
+  10% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10%);
+  }
+  60% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.bounce {
+  transition: all 300ms ease-in-out;
+  animation: bounce 300ms ease-in;
+  background-color: var(--accent-green);
 }
 
 *,
@@ -26,7 +48,8 @@ body {
   background-color: var(--main-light);
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: var(--main-dark);
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -49,15 +72,15 @@ button:active {
 
 header, footer {
   padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 footer {
   background-color: var(--main-dark);
   color: var(--main-light);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 footer a {
@@ -70,6 +93,7 @@ footer a {
   box-shadow:
     #2E294E50 0 6px 12px inset;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 5rem;
@@ -138,7 +162,7 @@ footer a {
 .modalContainer {
   width: 100%;
   min-width: 100vw;
-  height: 100%;
+  height: max-content;
   min-height: 100vh;
   background-color: #00000080;
   z-index: 1;
